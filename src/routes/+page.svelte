@@ -36,6 +36,7 @@
     </header>
     <nav style="--font-size: {size}">
         <ul>
+            // need to fix this at some point
             <li aria-current={$page.url.pathname === '/schedule' ? 'schedule' : undefined}>
                 <a href="/schedule">Schedule</a>
             </li>
