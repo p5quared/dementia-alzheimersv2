@@ -1,6 +1,5 @@
 <script>
     import "./reset.css"
-    import { page } from '$app/stores';
 
     let size = "54px";
 </script>
@@ -36,14 +35,13 @@
     </header>
     <nav style="--font-size: {size}">
         <ul>
-            // need to fix this at some point
-            <li aria-current={$page.url.pathname === '/schedule' ? 'schedule' : undefined}>
+            <li >
                 <a href="/schedule">Schedule</a>
             </li>
-            <li aria-current={$page.url.pathname === '/about' ? 'about' : undefined}>
+            <li >
                 <a href="/phone">Phone</a>
             </li>
-            <li aria-current={$page.url.pathname === '/phone' ? 'phone' : undefined}>
+            <li >
                 <a href="/games">Games</a>
             </li>
         </ul>
