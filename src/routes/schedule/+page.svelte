@@ -9,7 +9,8 @@
             doctor : "Dr. Van Nostrand",
             hospital : "Bellevue Medical Center",
             address : "462 1st Ave, NY, NY 10016",
-            center: {lat: 40.765126, lng: -73.964901}
+            center: {lat: 40.765126, lng: -73.964901},
+            mapLink: "https://maps.apple.com/?daddr=461+1st+Ave,+NY+NY"
         },
         {
             date: "October 31st",
@@ -17,7 +18,8 @@
             doctor : "Dr. Doofenshmirrtz",
             hospital : "NY Prrresbyterian",
             address : "520 E 70th St",
-            center: {lat: 40.71796056595768, lng:-73.98801934421422}
+            center: {lat: 40.71796056595768, lng:-73.98801934421422},
+            mapLink: "https://maps.apple.com/?daddr=520+E70+St,+NY+NY"
         },
         {
             date: "Friday 13th",
@@ -25,7 +27,8 @@
             doctor : "Chuky",
             hospital : "Muhaahhahahahha",
             address : "462 1st Ave, NY, NY 10016",
-            center: {lat: -80.06138606671266, lng: 22.38834869840997}
+            center: {lat: -80.06138606671266, lng: 22.38834869840997},
+            mapLink: "https://maps.apple.com/?daddr=Central+Park+NY+NY"
         },
     ]
     let selectedAppointment = 0;
@@ -40,7 +43,7 @@
 
     let previousHandler = () => {
         selectedAppointment = previousAppointments.pop()
-        prev_length_proxy
+        prev_length_proxy -= 1
     }
 </script>
 
@@ -53,6 +56,8 @@
                 <GoogleMap apiKey={PUBLIC_GOOGLE_MAPS_KEY} zoom={16} center={appointments[selectedAppointment].center}>
                     <GoogleMapMarker lat={appointments[selectedAppointment].center.lat} lng={appointments[selectedAppointment].center.lng} />
                 </GoogleMap>
+                <br><br>
+                <a id="mapLink" href="{appointments[selectedAppointment].mapLink}">Directions</a>
             {/key}
         </div>
         <div >
@@ -85,12 +90,12 @@
     .wrapper {
         background-color: #3C6E71;
         color: var(--color-offwhite);
-        padding: 3em;
+        padding: 4em;
+        height: 100vh;
     }
     #body {
         display: flex;
         gap: 2em;
-        height: 100vh;
         padding-top: 3em;
     }
     #information {

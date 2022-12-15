@@ -12,6 +12,18 @@
         }
     });
 
+    const handleReset = () => {
+        store.jumpTo(0)
+    }
+
+    const sendStore = async () => {
+        const response = await fetch('/api/tictactoe', {
+            method: 'POST',
+            body: JSON.stringify(store)
+        })
+
+        console.log(response.json)
+    }
 </script>
 
 <div class='game'>
@@ -34,7 +46,8 @@
         {/each}
     </ol>
     -->
-    <button on:click={ () => store.jumpTo(0)}>Reset</button>
+    <button on:click={handleReset}>Reset</button>
+    <button on:click={sendStore}>SEND DATA STORE TO SERVER</button>
 </div>
 
 <style>
