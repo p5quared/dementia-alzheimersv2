@@ -31,6 +31,10 @@
 	"dependencies": {
 		"@beyonk/async-script-loader": "^2.3.0",
 		"@beyonk/svelte-googlemaps": "^3.2.0",
-		"@fontsource/fira-mono": "^4.5.10"
+		"@fontsource/fira-mono": "^4.5.10",
+		"@sveltejs/adapter-node": "^1.0.0",
+		"@sveltejs/adapter-vercel": "^1.0.0",
+		"socket.io": "^4.5.4",
+		"socket.io-client": "^4.5.4"
 	}
 }

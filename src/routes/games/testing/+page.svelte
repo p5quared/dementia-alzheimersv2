@@ -1,13 +1,14 @@
 <script>
-    import {onMount} from "svelte";
-    import { browser} from "$app/environment";
+    let product = {};
 
-    let socket;
-    if (browser) {
-        socket = new WebSocket("ws://localhost:8000/chat")
-        socket.addEventListener("open", ()=> {
-            console.log("Opened")
-        })
+    async function getData() {
+        const response = await fetch('/api/test');
+        product = await response.json();
+
+        console.log(product)
     }
 
 </script>
+
+<h1>Testing Page!</h1>
+<button on:click={() => getData()}> GET DATA! </button>

@@ -8,42 +8,39 @@
             desc: "Annual Checkup",
             doctor : "Dr. Van Nostrand",
             hospital : "Bellevue Medical Center",
-            adddress : "462 1st Ave, NY, NY 10016"
+            address : "462 1st Ave, NY, NY 10016",
+            center: {lat: 40.765126, lng: -73.964901}
         },
         {
             date: "October 31st",
             desc: "Pray for Life",
             doctor : "Dr. Doofenshmirrtz",
             hospital : "NY Prrresbyterian",
-            adddress : "520 E 70th St"
+            address : "520 E 70th St",
+            center: {lat: 40.71796056595768, lng:-73.98801934421422}
         },
         {
             date: "Friday 13th",
             desc: "This is Grim",
             doctor : "Chuky",
             hospital : "Muhaahhahahahha",
-            adddress : "462 1st Ave, NY, NY 10016"
+            address : "462 1st Ave, NY, NY 10016",
+            center: {lat: -80.06138606671266, lng: 22.38834869840997}
         },
     ]
     let selectedAppointment = 0;
     let prev_length_proxy = 0
     let previousAppointments = [];
-    console.log("previous appointments: ", previousAppointments)
-    console.log("length", previousAppointments.length)
-    console.log("IF:", previousAppointments.length > 0)
     let nextHandler = () => {
         previousAppointments.push(selectedAppointment)
         selectedAppointment += 1;
         prev_length_proxy += 1;
         selectedAppointment %= appointments.length;
-        console.log("previous appointments: ", previousAppointments)
-        console.log("length", previousAppointments.length)
-        console.log("IF:", previousAppointments.length > 0)
     }
 
     let previousHandler = () => {
         selectedAppointment = previousAppointments.pop()
-        prev_length_proxy -= 1;
+        prev_length_proxy
     }
 </script>
 
@@ -52,9 +49,11 @@
     <h1>Here is your next appointment:</h1>
     <div id="body">
         <div class="map-wrapper">
-            <GoogleMap apiKey={PUBLIC_GOOGLE_MAPS_KEY} zoom={16} center={{lat: 40.765126, lng: -73.964901}}>
-                <GoogleMapMarker lat={40.765126} lng={-73.964901} />
-            </GoogleMap>
+            {#key selectedAppointment}
+                <GoogleMap apiKey={PUBLIC_GOOGLE_MAPS_KEY} zoom={16} center={appointments[selectedAppointment].center}>
+                    <GoogleMapMarker lat={appointments[selectedAppointment].center.lat} lng={appointments[selectedAppointment].center.lng} />
+                </GoogleMap>
+            {/key}
         </div>
         <div >
             <div id="information">
@@ -69,7 +68,7 @@
                     -{appointments[selectedAppointment].hospital}
                 </li>
                 <li>
-                    -{appointments[selectedAppointment].adddress}
+                    -{appointments[selectedAppointment].address}
                 </li>
             </ul>
             <button on:click={nextHandler} on:keypress={nextHandler}>Next Appointment</button>
