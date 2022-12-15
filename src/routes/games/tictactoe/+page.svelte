@@ -60,7 +60,4 @@
     .game-info {
         margin-left: 20px;
     }
-    ol {
-        padding-left: 30px;
-    }
 </style>
