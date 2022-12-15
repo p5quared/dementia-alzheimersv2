@@ -2,7 +2,7 @@
     let product = {};
 
     async function getData() {
-        const response = await fetch('/api/test');
+        const response = await fetch('/api/testing');
         product = await response.json();
 
         console.log(product)
