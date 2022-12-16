@@ -5,7 +5,7 @@
 <div class="wrapper">
     <div class="sub_wrapper">
         <div id="game">
-            <Grid />
+            <Grid/>
         </div>
         <div id="buttons">
             <button>Reset</button>
@@ -13,7 +13,6 @@
         </div>
     </div>
 </div>
-
 
 
 <style>
@@ -35,6 +34,7 @@
         font-size: 20pt;
         font-weight: bold;
     }
+
     button {
         background-color: #3C6E71;
         color: var(--color-offwhite);

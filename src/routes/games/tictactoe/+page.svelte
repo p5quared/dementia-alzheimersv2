@@ -1,6 +1,7 @@
 <script>
     import Board from './Board.svelte';
-    import { store, calculateWinner } from './stores';
+    import {store, calculateWinner} from './stores';
+
     let status;
     let winner;
     store.subscribe(store => {
@@ -57,6 +58,7 @@
         display: flex;
         flex-direction: row;
     }
+
     .game-info {
         margin-left: 20px;
     }

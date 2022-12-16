@@ -6,14 +6,14 @@
 
 <svelte:head>
     <title>Home</title>
-    <meta name="description" content="Svelte demo app" />
+    <meta name="description" content="Svelte demo app"/>
 </svelte:head>
 
 <section>
     <header>
         <div class="title-box">
             <a href="https://github.com/p5quared/dementia-alzheimers-site">
-                <img src="/images/careAD.png" alt="GitHub" />
+                <img src="/images/careAD.png" alt="GitHub"/>
                 <h1>Care AD</h1>
             </a>
         </div>
@@ -25,23 +25,26 @@
             </div>
             <div class="text-resize">
                 <button id="small"
-                        on:click="{()=> size = '36px'}">a</button>
+                        on:click="{()=> size = '36px'}">a
+                </button>
                 <button id="medium"
-                        on:click="{()=> size = '54px'}">A</button>
+                        on:click="{()=> size = '54px'}">A
+                </button>
                 <button id="large"
-                        on:click={()=> size = '72px'}>A</button>
+                        on:click={()=> size = '72px'}>A
+                </button>
             </div>
         </div>
     </header>
     <nav style="--font-size: {size}">
         <ul>
-            <li >
+            <li>
                 <a href="/schedule">Schedule</a>
             </li>
-            <li >
+            <li>
                 <a href="/phone">Phone</a>
             </li>
-            <li >
+            <li>
                 <a href="/games">Games</a>
             </li>
         </ul>
@@ -63,6 +66,7 @@
         flex-direction: column;
         justify-content: space-between;
     }
+
     footer {
         padding-inline: 15em;
         display: flex;
@@ -107,39 +111,48 @@
         color: var(--color-offwhite);
         text-decoration: none;
     }
+
     h1 {
         align-self: center;
         font-size: 40px;
         text-wrap: none;
     }
+
     .accessibility-features {
         display: flex;
         align-items: center;
         gap: 2em;
     }
+
     h2 {
         font-size: 32px;
     }
+
     .reader {
         display: flex;
         gap: 1em;
         background-color: #284B63;
         padding: 1em;
     }
+
     #reader-icon {
         height: 2em;
     }
+
     .text-resize {
         display: flex;
         gap: 1.5em;
         align-items: baseline;
     }
+
     #small {
         font-size: 24px;
     }
+
     #medium {
         font-size: 32px;
     }
+
     #large {
         font-size: 42px;
     }
@@ -151,6 +164,7 @@
         padding-top: 1em;
 
     }
+
     li {
         font-size: var(--font-size);
         border-bottom: 3px solid var(--color-offblack);
@@ -158,13 +172,15 @@
         padding: 0.5em;
 
         transition: 1s;
-        background: linear-gradient(#3C6E71,#3C6E71) no-repeat, var(--color-offwhite);
+        background: linear-gradient(#3C6E71, #3C6E71) no-repeat, var(--color-offwhite);
         background-size: 100% 0;
         background-position: center;
     }
+
     li:hover {
         background-size: 100% 100%
     }
+
     a {
         text-decoration: none;
         color: var(--color-offblack);

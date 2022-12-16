@@ -1,5 +1,5 @@
 <script>
-    import { store } from './stores.ts';
+    import {store} from './stores.ts';
 
     export let index;
 
