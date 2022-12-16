@@ -12,16 +12,15 @@ export async function GET() {
 	return new Response(JSON.stringify(data));
 }
 
-export async function POST() {
-	count += 1;
-
-	const data = {
-		count: count
-	};
-
-	if (!data) {
-		throw new Error('ERROR in POST: Data not found');
+export async function POST({ request }) {
+	const dataObject = await request.json();
+	if (dataObject.reset) {
+		count = 0;
+		return new Response(JSON.stringify({ count }));
 	}
 
-	return new Response(JSON.stringify(data));
+	const quantity: number = dataObject.quantity;
+	count += quantity;
+
+	return new Response(JSON.stringify({ count }));
 }
