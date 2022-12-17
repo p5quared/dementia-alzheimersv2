@@ -35,6 +35,7 @@ function createStore() {
 
 	return {
 		subscribe,
+		set,
 		move: (index: number) =>
 			update((store) => {
 				const history = store.history.slice(0, store.stepNumber + 1);
@@ -68,4 +69,4 @@ function createStore() {
 	};
 }
 
-export const store = createStore();
+export const boardStore = createStore();

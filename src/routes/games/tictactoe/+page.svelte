@@ -1,10 +1,10 @@
 <script>
     import Board from './Board.svelte';
-    import {store, calculateWinner} from './stores';
+    import {boardStore, calculateWinner} from './stores';
 
     let status;
     let winner;
-    store.subscribe(store => {
+    boardStore.subscribe(store => {
         winner = calculateWinner(store.history[store.history.length - 1].board);
         if (winner) {
             status = `Winner: ${winner}`;
@@ -14,17 +14,40 @@
     });
 
     const handleReset = () => {
-        store.jumpTo(0)
+        boardStore.reset()
+        sendStore()
+    }
+
+    const getStore = async () => {
+        const response = await fetch('/api/tictactoe', {
+                method: 'GET'
+            }
+        )
+        const data = await response.json()
+        console.log("data", data)
+
+        $boardStore.history = data.gameState.history
+        $boardStore.xIsNext = data.gameState.xIsNext
+        $boardStore.stepNumber = data.gameState.stepNumber
     }
 
     const sendStore = async () => {
+        const toServer = {
+            history: $boardStore.history,
+            xIsNext: $boardStore.xIsNext,
+            stepNumber: $boardStore.stepNumber
+        }
+
         const response = await fetch('/api/tictactoe', {
             method: 'POST',
-            body: JSON.stringify(store)
+            body: JSON.stringify(toServer)
         })
 
-        console.log(response.json)
+        const data = await response.json()
+        console.log(data)
     }
+
+
 </script>
 
 <div class='game'>
@@ -48,7 +71,8 @@
     </ol>
     -->
     <button on:click={handleReset}>Reset</button>
-    <button on:click={sendStore}>SEND DATA STORE TO SERVER</button>
+    <button on:click={sendStore}>SEND TO SERVER</button>
+    <button on:click={getStore}>UPDATE FROM SERVER</button>
 </div>
 
 <style>
