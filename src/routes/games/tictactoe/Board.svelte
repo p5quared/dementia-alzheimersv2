@@ -12,18 +12,18 @@
 
 <div>
     <div class="board-row">
-        <Square index=0/>
-            <Square index=1/>
-                <Square index=2/>
+        <Square index=0 />
+            <Square index=1 />
+                <Square index=2 />
     </div>
     <div class="board-row">
-        <Square index=3/>
-            <Square index=4/>
-                <Square index=5/>
+        <Square index=3 />
+            <Square index=4 />
+                <Square index=5 />
     </div>
     <div class="board-row">
-        <Square index=6/>
-            <Square index=7/>
-                <Square index=8/>
+        <Square index=6 />
+            <Square index=7 />
+                <Square index=8 />
     </div>
 </div>
