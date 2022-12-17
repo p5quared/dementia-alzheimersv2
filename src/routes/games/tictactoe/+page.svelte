@@ -14,8 +14,8 @@
     });
 
     const handleReset = () => {
-        boardStore.reset()
-        sendStore()
+        boardStore.jumpTo(0);
+        sendStore();
     }
 
     const getStore = async () => {
@@ -24,7 +24,6 @@
             }
         )
         const data = await response.json()
-        console.log("data", data)
 
         $boardStore.history = data.gameState.history
         $boardStore.xIsNext = data.gameState.xIsNext
@@ -37,14 +36,10 @@
             xIsNext: $boardStore.xIsNext,
             stepNumber: $boardStore.stepNumber
         }
-
-        const response = await fetch('/api/tictactoe', {
+        await fetch('/api/tictactoe', {
             method: 'POST',
             body: JSON.stringify(toServer)
         })
-
-        const data = await response.json()
-        console.log(data)
     }
 
 
