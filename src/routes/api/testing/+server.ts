@@ -1,3 +1,5 @@
+import type { RequestEvent } from '@sveltejs/kit';
+
 let count = 0;
 
 export async function GET() {
@@ -12,7 +14,7 @@ export async function GET() {
 	return new Response(JSON.stringify(data));
 }
 
-export async function POST({ request }) {
+export async function POST({ request }: RequestEvent) {
 	const dataObject = await request.json();
 	if (dataObject.reset) {
 		count = 0;
