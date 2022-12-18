@@ -1,6 +1,7 @@
 <script>
     import Board from './Board.svelte';
     import {boardStore, calculateWinner} from './stores';
+    import { onMount, onDestroy } from "svelte";
 
     let status;
     let winner;
@@ -13,12 +14,17 @@
         }
     });
 
+    onMount(async () => {
+        await getStore()
+    })
+
     const handleReset = () => {
         boardStore.jumpTo(0);
         sendStore();
     }
 
     const getStore = async () => {
+        console.log("Getting from server...")
         const response = await fetch('/api/tictactoe', {
                 method: 'GET'
             }
@@ -43,6 +49,15 @@
     }
 
 
+    const interval = setInterval(() => {
+        getStore()
+    }, 1000);
+
+    onDestroy( () => {
+        console.log("Destroying element...")
+        clearInterval(interval)
+    });
+
 </script>
 
 <div class='game'>
@@ -66,8 +81,6 @@
     </ol>
     -->
     <button on:click={handleReset}>Reset</button>
-    <button on:click={sendStore}>SEND TO SERVER</button>
-    <button on:click={getStore}>UPDATE FROM SERVER</button>
 </div>
 
 <style>
