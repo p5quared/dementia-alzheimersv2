@@ -5,6 +5,33 @@
 
     $: current = $boardStore.history[$boardStore.stepNumber]
     $: value = current.board[index];
+
+    const handleMove = async () => {
+        // update from server
+        const response = await fetch('/api/tictactoe', {
+                method: 'GET'
+            }
+        )
+        const data = await response.json()
+
+        $boardStore.history = data.gameState.history
+        $boardStore.xIsNext = data.gameState.xIsNext
+        $boardStore.stepNumber = data.gameState.stepNumber
+
+        // move on client
+        boardStore.move(index)
+
+        // move on server
+        const toServer = {
+            history: $boardStore.history,
+            xIsNext: $boardStore.xIsNext,
+            stepNumber: $boardStore.stepNumber
+        }
+        await fetch('/api/tictactoe', {
+            method: 'POST',
+            body: JSON.stringify(toServer)
+        })
+    }
 </script>
 
 <style>
@@ -27,4 +54,4 @@
     }
 </style>
 
-<button on:click={ () => boardStore.move(index) }>{ value }</button>
+<button on:click={handleMove}>{ value }</button>
