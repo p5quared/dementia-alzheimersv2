@@ -7,28 +7,28 @@
             date: "Tomorrow, Feb 29, 2023 @10AM",
             desc: "Annual Checkup",
             doctor: "Dr. Van Nostrand",
-            hospital: "Bellevue Medical Center",
-            address: "462 1st Ave, NY, NY 10016",
-            center: {lat: 40.765126, lng: -73.964901},
+            hospital: "Mount Sinai West",
+            address: "1000 10th Ave, New York, NY 10019",
+            center: {lat: 40.769760, lng: -73.986950},
             mapLink: "https://maps.apple.com/?daddr=461+1st+Ave,+NY+NY"
         },
         {
             date: "October 31st",
-            desc: "Pray for Life",
-            doctor: "Dr. Doofenshmirrtz",
-            hospital: "NY Prrresbyterian",
-            address: "520 E 70th St",
-            center: {lat: 40.71796056595768, lng: -73.98801934421422},
-            mapLink: "https://maps.apple.com/?daddr=520+E70+St,+NY+NY"
+            desc: "An important appointment",
+            doctor: "Dr. Clyde Borowitz",
+            hospital: "Rockefeller University Hospital",
+            address: "1230 York Ave, New York, NY 10065",
+            center: {lat: 40.761940, lng: -73.955430},
+            mapLink: "https://maps.apple.com/?daddr=Rockefeller+University+Hospital"
         },
         {
-            date: "Friday 13th",
-            desc: "This is Grim",
-            doctor: "Chuky",
-            hospital: "Muhaahhahahahha",
-            address: "462 1st Ave, NY, NY 10016",
-            center: {lat: -80.06138606671266, lng: 22.38834869840997},
-            mapLink: "https://maps.apple.com/?daddr=Central+Park+NY+NY"
+            date: "December 23rd",
+            desc: "Colonoscopy",
+            doctor: "Dr. Dolittle",
+            hospital: "NY Presbyterian (Lower Manhattan)",
+            address: "170 William St, New York, NY 10038",
+            center: {lat: 40.710499, lng: -74.005653},
+            mapLink: "https://maps.apple.com/?daddr=NY+Presbyterian+Lower+Manhattan"
         },
     ]
     let selectedAppointment = 0;
@@ -49,7 +49,7 @@
 
 
 <div class="wrapper">
-    <h1>Here is your next appointment:</h1>
+    <h1>Here are your upcomming appointments:</h1>
     <div id="body">
         <div class="map-wrapper">
             {#key selectedAppointment}
