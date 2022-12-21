@@ -12,7 +12,7 @@
 <section>
     <header>
         <div class="title-box">
-            <a href="https://github.com/p5quared/dementia-alzheimers-site">
+            <a href="https://github.com/p5quared/dementia-alzheimersv2">
                 <img src="/images/careAD.png" alt="GitHub"/>
                 <h1>Care AD</h1>
             </a>
@@ -42,7 +42,7 @@
                 <a href="/schedule">Schedule</a>
             </li>
             <li>
-                <a href="/phone">Phone</a>
+                <a href="/phone">Contact</a>
             </li>
             <li>
                 <a href="/games">Games</a>
