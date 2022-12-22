@@ -171,6 +171,5 @@
         font-size: 24pt;
         font-weight: bold;
         width: fit-content;
-
     }
 </style>

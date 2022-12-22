@@ -63,8 +63,6 @@
 <div class='game'>
     <div class='game-board'>
         <Board/>
-    </div>
-    <div class='game-info'>
         <div>{status}</div>
     </div>
     <!--
@@ -80,18 +78,44 @@
         {/each}
     </ol>
     -->
-    <button on:click={handleReset}>Reset</button>
+    <div id="buttons">
+        <button id="reset" on:click={handleReset}>Reset</button>
+        <a id="return" href="/games">Return</a>
+    </div>
 </div>
 
 <style>
     .game {
+        height: 100vh;
         font: 14px "Century Gothic", Futura, sans-serif;
         margin: 20px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
     }
 
-    .game-info {
-        margin-left: 20px;
+    .game-board {
+        padding-bottom: 2em;
+    }
+
+    button {
+        background-color: #3C6E71;
+        color: var(--color-offwhite);
+        padding: 0.7em;
+        font-size: 18px;
+    }
+
+    #return {
+        align-self: center;
+        padding: 0.5em;
+        background-color: #284B63;
+        color: var(--color-offwhite);
+        border: solid black;
+
+        font-size: 15pt;
+        font-weight: bold;
+        width: fit-content;
     }
 </style>

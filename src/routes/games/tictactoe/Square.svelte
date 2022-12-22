@@ -42,11 +42,11 @@
         font-size: 24px;
         font-weight: bold;
         line-height: 34px;
-        height: 34px;
+        height: 5vw;
         margin: -1px;
         padding: 0;
         text-align: center;
-        width: 34px;
+        width: 5vw;
     }
 
     button:focus {
