@@ -49,7 +49,7 @@
 
 
 <div class="wrapper">
-    <h1>Here are your upcomming appointments:</h1>
+    <h1>Here are your upcoming appointments:</h1>
     <div id="body">
         <div class="map-wrapper">
             {#key selectedAppointment}
@@ -58,7 +58,7 @@
                                      lng={appointments[selectedAppointment].center.lng}/>
                 </GoogleMap>
                 <br><br>
-                <a id="mapLink" href="{appointments[selectedAppointment].mapLink}">Directions</a>
+                <a id="mapLink" target="_blank" rel="noreferrer" href="{appointments[selectedAppointment].mapLink}">Directions</a>
             {/key}
         </div>
         <div>
@@ -143,4 +143,3 @@
         font-size: 54px;
     }
 </style>
-
