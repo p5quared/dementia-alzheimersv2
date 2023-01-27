@@ -9,8 +9,8 @@
         data-cell-val="{cell.val}"
         style="--img: {cell.img}"
         on:click={() => onHandleClick(cell.key)}
-        on:keypress={() => onHandleClick(cell.key)}
-/>
+        on:keypress={() => onHandleClick(cell.key)}>
+</div>
 
 
 
