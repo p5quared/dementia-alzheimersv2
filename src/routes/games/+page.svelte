@@ -30,29 +30,27 @@
             </div>
         </div>
     </header>
-    <div class="main-content">
-        <nav style="--font-size: {size}">
-            <ul>
-                <li>
-                    <a href="/games/match">
-                        Matching
-                        <img class="game-thumb" src="/images/matching.jpeg" alt="matching game" />
-                    </a>
-                </li>
-                <li>
-                    <a href="/games/tictactoe">
-                        TicTacToe
-                        <img class="game-thumb" src="/images/tictactoe.png" alt="tictactoegame" />
-                    </a>
-                </li>
-                <li>
-                    <a href="/games/testing">
-                        Testing
-                        <img class="game-thumb" src="/images/testing.png" alt="testing-game" />
-                    </a>
-                </li>
-            </ul>
-        </nav>
+    <div class="main-content" style="--font-size: {size}">
+        <ul>
+            <li>
+                <a href="/games/match">
+                    <img class="game-thumb" src="/images/matching.jpeg" alt="matching game" />
+                    Matching
+                </a>
+            </li>
+            <li>
+                <a href="/games/tictactoe">
+                    <img class="game-thumb" src="/images/tictactoe.png" alt="tictactoegame" />
+                    TicTacToe
+                </a>
+            </li>
+            <li>
+                <a href="/games/testing">
+                    <img class="game-thumb" src="/images/testing.png" alt="testing-game" />
+                    Testing
+                </a>
+            </li>
+        </ul>
         <a id="return" href="/">Return</a>
     </div>
 </section>
@@ -63,6 +61,7 @@
         display: flex;
         flex-direction: column;
 
+        gap: 1em;
     }
     header {
         padding-inline: 15em;
@@ -79,6 +78,8 @@
         display: flex;
         flex-direction: column;
 
+        justify-content: space-around;
+        height: 100%;
     }
 
     h1 {
@@ -150,6 +151,16 @@
         background-size: 100% 100%
     }
 
+    li a {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     a {
         text-decoration: none;
         color: var(--color-offblack);
@@ -164,6 +175,7 @@
     #return {
         align-self: center;
         padding: 0.5em;
+        margin-bottom: 2em;
         background-color: #284B63;
         color: var(--color-offwhite);
         border: solid black;
