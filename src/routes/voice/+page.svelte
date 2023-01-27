@@ -10,7 +10,7 @@
     const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
     const SpeechRecognitionEvent = window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
-    const destinations = ['appointment', 'games', 'tic-tac-toe', 'matching', 'home', 'schedule', 'contact', 'beam me up scotty'];
+    const destinations = ['appointment', 'games', 'Tic-tac-toe', 'matching', 'home', 'schedule', 'contact', 'sandwich'];
     const grammar = `#JSGF V1.0; grammar destinations; public <destination> = ${destinations.join(' | ')};`
 
     const recognition = new SpeechRecognition();
@@ -43,7 +43,6 @@
             }
         }
 
-
         switch (match) {
             case 'home' || 'beam me up scotty':
                 window.location = '/'
@@ -57,7 +56,7 @@
             case 'games':
                 window.location = '/games'
                 break
-            case 'tic-tac-toe':
+            case 'Tic-tac-toe':
                 window.location = '/games/tictactoe'
                 break
             case 'matching':
@@ -66,6 +65,8 @@
             case 'contact':
                 window.location = '/contact'
                 break
+            case 'sandwich':
+                window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
         }
     }
 
