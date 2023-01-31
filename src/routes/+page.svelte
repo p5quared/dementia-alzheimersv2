@@ -178,7 +178,7 @@
     }
 
     li:hover {
-        background-size: 100% 100%
+        background-size: 100% 100%;
     }
 
     a {
