@@ -42,7 +42,7 @@
                 <a href="/schedule">Schedule</a>
             </li>
             <li>
-                <a href="/phone">Contact</a>
+                <a href="/reminders">Reminders</a>
             </li>
             <li>
                 <a href="/games">Games</a>
