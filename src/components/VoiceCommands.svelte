@@ -1,4 +1,4 @@
-<script>
+<script context="module">
     let valid = true;
     try {
         let recognition = window.SpeechRecognition || webkitSpeechRecognition;
@@ -70,7 +70,7 @@
         }
     }
 
-    const startRecognition = () => {
+    export const startRecognition = () => {
         recognition.start();
         visualize = true;
         console.log('Ready to receive voice command.')
@@ -79,7 +79,7 @@
 </script>
 
 {#if valid}
-    <button on:click={startRecognition} id="recognition-button">
+    <button on:click={() => startRecognition()} id="recognition-button">
         <img src="/images/voice_commands_icon.svg" alt="Voice Commands">
     </button>
 {/if}
@@ -96,10 +96,27 @@
         border-radius: 50%;
 
         margin-right: 3em;
-        margin-bottom: 5em;
+        margin-bottom: 8em;
+
+       /* Animations */
+        transform: rotate(-45deg);
+        transition: 1s;
+        background: linear-gradient(30deg, #3c6e71, #3c6e71) no-repeat white;
+        background-size: 100% 0;
+        background-position-x: 50%;
+    }
+
+    #recognition-button:hover {
+        background-size: 100% 100%;
+        cursor: pointer;
+    }
+
+    #recognition-button:hover img {
+        fill: white;
     }
 
     img {
+        transform: rotate(45deg);
         width: 80%;
         height: 80%;
     }
