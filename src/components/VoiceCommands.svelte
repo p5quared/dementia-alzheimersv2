@@ -8,7 +8,7 @@
     }
     const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
     const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
-    const SpeechRecognitionEvent = window.SpeechRecognitionEvent || jebkitSpeechRecognitionEvent;
+    const SpeechRecognitionEvent = window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
     const destinations = ['appointment', 'games', 'Tic-tac-toe', 'matching', 'home', 'schedule', 'contact', 'sandwich'];
     const grammar = `#JSGF V1.0; grammar destinations; public <destination> = ${destinations.join(' | ')};`
