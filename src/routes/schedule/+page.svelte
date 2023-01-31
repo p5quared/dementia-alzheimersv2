@@ -136,7 +136,7 @@
 
     .map-wrapper {
         width: 800px;
-        height: 700px;
+        height: 600px;
     }
 
     h1 {
