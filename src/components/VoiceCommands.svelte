@@ -10,7 +10,7 @@
     const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
     const SpeechRecognitionEvent = window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
-    const destinations = ['appointment', 'games', 'Tic-tac-toe', 'matching', 'home', 'schedule', 'contact', 'sandwich'];
+    const destinations = ['appointment', 'games', 'Tic-tac-toe', 'matching', 'home', 'schedule', 'contact', 'sandwich', 'back'];
     const grammar = `#JSGF V1.0; grammar destinations; public <destination> = ${destinations.join(' | ')};`
 
     const recognition = new SpeechRecognition();
@@ -65,8 +65,12 @@
             case 'contact':
                 window.location = '/contact'
                 break
+            case 'back':
+                window.history.back();
+                break
             case 'sandwich':
                 window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+                break
         }
     }
 
