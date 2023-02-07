@@ -69,4 +69,5 @@ function createStore() {
 	};
 }
 
-export const boardStore = createStore();
+export const boardStore_global = createStore();
+export const boardStore_private = createStore();

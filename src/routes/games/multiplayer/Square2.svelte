@@ -1,9 +1,9 @@
 <script>
-    import {boardStore} from './stores.ts';
+    import {boardStore2} from './stores2.ts';
 
     export let index;
 
-    $: current = $boardStore.history[$boardStore.stepNumber]
+    $: current = $boardStore2.history[$boardStore2.stepNumber]
     $: value = current.board[index];
 
     const handleMove = async () => {
@@ -14,18 +14,18 @@
         )
         const data = await response.json()
 
-        $boardStore.history = data.gameState.history
-        $boardStore.xIsNext = data.gameState.xIsNext
-        $boardStore.stepNumber = data.gameState.stepNumber
+        $boardStore2.history = data.gameState.history
+        $boardStore2.xIsNext = data.gameState.xIsNext
+        $boardStore2.stepNumber = data.gameState.stepNumber
 
         // move on client
-        boardStore.move(index)
+        $boardStore2.move(index)
 
         // move on server
         const toServer = {
-            history: $boardStore.history,
-            xIsNext: $boardStore.xIsNext,
-            stepNumber: $boardStore.stepNumber
+            history: $boardStore2.history,
+            xIsNext: $boardStore2.xIsNext,
+            stepNumber: $boardStore2.stepNumber
         }
         await fetch('/api/tictactoe', {
             method: 'POST',

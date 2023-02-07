@@ -53,7 +53,7 @@
         padding-bottom: 1em;
 
         gap: 2em;
-        background-color: #5603AD;
+        background-color: #b99ade;
     }
 
     .wrapper {

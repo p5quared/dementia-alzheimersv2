@@ -1,6 +1,7 @@
 <script>
     import {GoogleMap, GoogleMapMarker} from "@beyonk/svelte-googlemaps";
     import {PUBLIC_GOOGLE_MAPS_KEY} from "$env/static/public";
+    import VoiceCommands, {startRecognition} from "../../components/VoiceCommands.svelte";
 
     let appointments = [
         {
@@ -25,7 +26,7 @@
             date: "December 23rd",
             desc: "Colonoscopy",
             doctor: "Dr. Dolittle",
-            hospital: "NY Presbyterian (Lower Manhattan)",
+            hospital: "NY Presbyterian",
             address: "170 William St, New York, NY 10038",
             center: {lat: 40.710499, lng: -74.005653},
             mapLink: "https://maps.apple.com/?daddr=NY+Presbyterian+Lower+Manhattan"
@@ -45,9 +46,10 @@
         selectedAppointment = previousAppointments.pop()
         prev_length_proxy -= 1
     }
+    startRecognition();
 </script>
 
-
+<VoiceCommands />
 <div class="wrapper">
     <h1>Here are your upcoming appointments:</h1>
     <div id="body">
