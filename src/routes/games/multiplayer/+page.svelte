@@ -1,8 +1,8 @@
 <script>
-    import Board from './tictactoe/Board.svelte';
-    import Header from "../../../components/Header.svelte";
-    import Footer from "../../../components/Footer.svelte";
-    import {boardStore_global, boardStore_private, calculateWinner} from './tictactoe/stores.ts';
+    import Board  from "./tictactoe/Board.svelte";
+    import Header from "$components/Header.svelte";
+    import Footer from "$components/Footer.svelte";
+    import {boardStore_global, boardStore_private, calculateWinner} from '$stores';
     import { onMount, onDestroy } from "svelte";
 
     import GlobalBoard from "./Board2.svelte";
@@ -31,40 +31,27 @@
 
     const resetPrivate = () => {
         boardStore_private.jumpTo(0);
-        sendStore(room_id);
+        sendStore();
     }
 
     const getStore = async () => {
         console.log("Getting from server...")
-        const response = await fetch('/api/tictactoe' + new URLSearchParams({
-           id:room_id
-        }), {
+        const response = await fetch('/api/tictactoe', {
                 method: 'GET'
-            }
-        )
+        })
         const data = await response.json()
 
-        $boardStore_global.history = data.global.history
-        $boardStore_global.xIsNext = data.global.xIsNext
-        $boardStore_global.stepNumber = data.global.stepNumber
-
-        if (data.private) {
-            valid_room = true
-            $boardStore_private.history = data.private.history
-            $boardStore_private.xIsNext = data.private.xIsNext
-            $boardStore_private.stepNumber = data.private.stepNumber
-        }
+        $boardStore_global.history = data.history
+        $boardStore_global.xIsNext = data.xIsNext
+        $boardStore_global.stepNumber = data.stepNumber
     }
 
-    const sendStore = async (_id=null) => {
+    const sendStore = async () => {
         const toServer = {
-        global: {
             history: $boardStore_global.history,
             xIsNext: $boardStore_global.xIsNext,
-            stepNumber: $boardStore_global.stepNumber,
-        },
-           id: _id
-    }
+            stepNumber: $boardStore_global.stepNumber
+        }
         await fetch('/api/tictactoe', {
             method: 'POST',
             body: JSON.stringify(toServer)
@@ -74,9 +61,6 @@
 
     const interval = setInterval(() => {
         getStore()
-        if(room_id && valid_room) {
-            return
-        }
     }, 1000);
 
     onDestroy( () => {
@@ -87,16 +71,6 @@
     // so begins the private game code
     let valid_room = false;
     let room_id = "";
-
-    const handleCreateRoom = async () => {
-        const response = await fetch('/api/tictactoe', {
-            method: 'POST',
-            body: null
-        })
-        room_id = data.room_id
-        const data = await response.json()
-        valid_room = true
-    }
 </script>
 
 <section>
@@ -149,18 +123,18 @@
             </ol>
             -->
             <div class="buttons">
-                <button class="reset" on:click={resetGlobal}>Reset</button>
+                <button class="reset" on:click={resetPrivate}>Reset</button>
             </div>
-                {:else}
-                <div class="room-finder">
-                    <form class="room-form">
-                        <label for="room">Room ID:</label>
-                        <input type="text" id="room" name="room" placeholder="Enter a room ID">
-                        <input type="submit" value="Join" class="submit">
-                    </form>
-                    <p style="text-align: center">or</p>
-                    <button class="create-room">Create Room</button>
-                </div>
+            {:else}
+            <div class="room-finder">
+                <form class="room-form">
+                    <label for="room">Room ID:</label>
+                    <input type="text" id="room" name="room" placeholder="Enter a room ID" bind:value={room_id}>
+                    <input type="submit" value="Join" class="submit">
+                </form>
+                <p style="text-align: center">or</p>
+                <button class="create-room" on:click={sendStore(true)}>Create Room</button>
+            </div>
             {/if}
 
         </div>
