@@ -1,12 +1,13 @@
 <script>
    export let link;
    export let image = false;
+   export let alternate = "";
 </script>
 
 <a href={link}>
     <slot/>
     {#if image}
-        <img src={image} alt="image"/>
+        <img src={image} alt={alternate}/>
     {/if}
 </a>
 
