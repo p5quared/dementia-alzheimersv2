@@ -83,7 +83,7 @@
                     <button on:click={previousHandler}>Previous Appointment</button>
                 {/if}
             </div>
-            <a href="/">Return to Home Menu</a>
+            <a href="/">Return</a>
         </div>
     </div>
 </div>
