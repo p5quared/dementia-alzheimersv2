@@ -9,7 +9,7 @@
         </div>
         <div id="buttons">
             <button>Reset</button>
-            <a href="/games">Return to Games</a>
+            <a href="/games">Return</a>
         </div>
     </div>
 </div>
@@ -23,6 +23,11 @@
     }
 
     #buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        gap: 1em;
     }
 
     a {
@@ -53,7 +58,7 @@
         padding-bottom: 1em;
 
         gap: 2em;
-        background-color: #b99ade;
+        background-color: #ebd7bb;
     }
 
     .wrapper {

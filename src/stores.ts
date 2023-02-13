@@ -71,3 +71,5 @@ function createStore() {
 
 export const boardStore_global = createStore();
 export const boardStore_private = createStore();
+
+export const game_id = writable('');

@@ -1,34 +1,37 @@
 <script>
-    import {boardStore_private} from "../../../stores.ts";
+    import {boardStore_private, game_id} from "$stores";
 
     export let index;
-    export let game_id;
 
     $: current = $boardStore_private.history[$boardStore_private.stepNumber]
     $: value = current.board[index];
 
     const handleMove = async () => {
         // update from server
-        const response = await fetch('/api/tictactoe', {
-                method: 'GET'
-            }
-        )
+        const url = "/api/tictactoe-private?id=" + $game_id;
+        const response = await fetch(url, {
+            method: 'GET'
+        })
         const data = await response.json()
 
-        $boardStore_private.history = data.gameState.history
-        $boardStore_private.xIsNext = data.gameState.xIsNext
-        $boardStore_private.stepNumber = data.gameState.stepNumber
+        $boardStore_private.history = data.history
+        $boardStore_private.xIsNext = data.xIsNext
+        $boardStore_private.stepNumber = data.stepNumber
 
         // move on client
-        $boardStore_private.move(index)
+        boardStore_private.move(index)
 
         // move on server
         const toServer = {
-            history: $boardStore_private.history,
-            xIsNext: $boardStore_private.xIsNext,
-            stepNumber: $boardStore_private.stepNumber
+            id: $game_id,
+            game_state: {
+                history: $boardStore_private.history,
+                xIsNext: $boardStore_private.xIsNext,
+                stepNumber: $boardStore_private.stepNumber
+            }
         }
-        await fetch('/api/tictactoe', {
+        console.log("Sending to server: ", toServer)
+        await fetch(url, {
             method: 'POST',
             body: JSON.stringify(toServer)
         })
@@ -52,6 +55,11 @@
 
     button:focus {
         outline: none;
+    }
+
+    button:hover {
+        background: #eee;
+        cursor: pointer;
     }
 </style>
 

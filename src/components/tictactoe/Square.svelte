@@ -8,13 +8,11 @@
 
     const handleMove = async () => {
         // first, update from server
-        console.log("handleMove")
         const response = await fetch('/api/tictactoe', {
                 method: 'GET'
             }
         )
         const data = await response.json()
-        console.log("Data from server: ", data)
 
         $boardStore_global.history = data.history
         $boardStore_global.xIsNext = data.xIsNext

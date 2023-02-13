@@ -11,7 +11,6 @@ let global_game = {
 };
 
 export const GET = () => {
-	console.log(JSON.stringify(global_game));
 	return new Response(JSON.stringify(global_game));
 };
 
