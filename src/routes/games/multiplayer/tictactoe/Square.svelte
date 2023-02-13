@@ -1,5 +1,5 @@
 <script>
-    import {boardStore_global} from './stores.ts';
+    import {boardStore_global} from '$stores';
 
     export let index;
 
@@ -7,21 +7,23 @@
     $: value = current.board[index];
 
     const handleMove = async () => {
-        // update from server
+        // first, update from server
+        console.log("handleMove")
         const response = await fetch('/api/tictactoe', {
                 method: 'GET'
             }
         )
         const data = await response.json()
+        console.log("Data from server: ", data)
 
-        $boardStore_global.history = data.gameState.history
-        $boardStore_global.xIsNext = data.gameState.xIsNext
-        $boardStore_global.stepNumber = data.gameState.stepNumber
+        $boardStore_global.history = data.history
+        $boardStore_global.xIsNext = data.xIsNext
+        $boardStore_global.stepNumber = data.stepNumber
 
         // move on client
         boardStore_global.move(index)
 
-        // move on server
+        // finally, move on server
         const toServer = {
             history: $boardStore_global.history,
             xIsNext: $boardStore_global.xIsNext,
@@ -52,6 +54,12 @@
     button:focus {
         outline: none;
     }
+
+    button:hover {
+        background: #eee;
+        cursor: pointer;
+    }
+
 </style>
 
 <button on:click={handleMove}>{ value }</button>
