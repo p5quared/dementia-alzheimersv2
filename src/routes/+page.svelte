@@ -1,8 +1,8 @@
 <script>
     import "./reset.css"
-    import Header from "../components/Header.svelte";
-    import ExpandingLink from "../components/ExpandingLink.svelte";
-    import Footer from "../components/Footer.svelte";
+    import Header from "$components/Header.svelte";
+    import ExpandingLink from "$components/ExpandingLink.svelte";
+    import Footer from "$components/Footer.svelte";
 
     let size = "54px";
     const sizes = {
