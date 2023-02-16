@@ -57,7 +57,7 @@
         margin: 1.5em;
         padding: 1em;
         background-color: #3C6E71;
-        font-size: var(--font-size);
+        font-size: 3em;
         outline: var(--color-offblack) 2px solid;
     }
 

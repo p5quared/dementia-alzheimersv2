@@ -92,7 +92,7 @@
     .wrapper {
         background-color: #3C6E71;
         color: var(--color-offwhite);
-        padding: 4em;
+        padding: 2em;
         height: 100vh;
     }
 
@@ -137,7 +137,7 @@
 
     .map-wrapper {
         width: 800px;
-        height: 600px;
+        height: 500px;
     }
 
     h1 {
