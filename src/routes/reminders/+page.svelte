@@ -1,6 +1,5 @@
 <script>
-    import VoiceCommands, {startRecognition} from '../../components/VoiceCommands.svelte';
-   startRecognition();
+    import VoiceCommands from '../../components/VoiceCommands.svelte';
 
    import Header from "../../components/Header.svelte";
 </script>

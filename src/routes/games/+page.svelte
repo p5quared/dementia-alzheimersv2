@@ -3,7 +3,7 @@
     import Header from "$components/Header.svelte";
     import Footer from "$components/Footer.svelte";
     import ExpandingLink from "$components/ExpandingLink.svelte";
-    import VoiceCommands, {startRecognition} from "$components/VoiceCommands.svelte";
+    import VoiceCommands from "$components/VoiceCommands.svelte";
 
     let size = "54px";
     const sizes = {
