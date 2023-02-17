@@ -1,7 +1,7 @@
 <script>
     import {GoogleMap, GoogleMapMarker} from "@beyonk/svelte-googlemaps";
     import {PUBLIC_GOOGLE_MAPS_KEY} from "$env/static/public";
-    import VoiceCommands, {startRecognition} from "$components/VoiceCommands.svelte";
+    import VoiceCommands from "$components/VoiceCommands.svelte";
 
     let appointments = [
         {
