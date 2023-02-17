@@ -1,6 +1,6 @@
 <footer>
     <a href="/about">Blog</a>
-    <a href="/about">Sitemap</a>
+    <a href="https://github.com/p5quared/dementia-alzheimers-site">GitHub</a>
     <a href="/about">About Us</a>
 </footer>
 
