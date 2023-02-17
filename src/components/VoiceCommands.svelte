@@ -1,4 +1,4 @@
-<script context="module">
+<script>
     let valid = true;
     try {
         let recognition = window.SpeechRecognition || webkitSpeechRecognition;
@@ -74,22 +74,34 @@
         }
     }
 
-    export const startRecognition = () => {
+
+    let notify = false;
+    recognition.onaudiostart = () => {
+        notify = true;
+        console.log("NOTIFYING")
+    }
+    recognition.onaudioend = () => {
+        notify = false;
+        console.log("NO LONGER NOTIFYING")
+    }
+
+    const startRecognition = () => {
         recognition.start();
         visualize = true;
-        console.log('Ready to receive voice command.')
     }
 
 </script>
 
 {#if valid}
-    <button on:click={() => startRecognition()} id="recognition-button">
-        <img src="/images/voice_commands_icon.svg" alt="Voice Commands">
-    </button>
+    {#key notify}
+        <button on:click={() => startRecognition()} class:notify>
+            <img src="/images/voice_commands_icon.svg" alt="Voice Commands">
+        </button>
+    {/key}
 {/if}
 
 <style>
-    #recognition-button {
+    button {
         position: fixed;
         bottom: 0;
         right: 0;
@@ -103,26 +115,44 @@
         margin-bottom: 8em;
 
        /* Animations */
-        transform: rotate(-45deg);
+        transform: rotate(125deg);
         transition: 1s;
         background: linear-gradient(30deg, #3c6e71, #3c6e71) no-repeat white;
         background-size: 100% 0;
         background-position-x: 50%;
     }
 
-    #recognition-button:hover {
+    button:hover {
         background-size: 100% 100%;
         cursor: pointer;
     }
 
-    #recognition-button:hover img {
+    button:hover img {
         fill: white;
     }
 
     img {
-        transform: rotate(45deg);
+        transform: rotate(-125deg);
         width: 80%;
         height: 80%;
+    }
+
+    .notify {
+        background-color: orangered;
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+        }
+        70% {
+            box-shadow: 0 0 0 50px rgba(255, 0, 0, 0.3);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+        }
     }
 </style>
 
